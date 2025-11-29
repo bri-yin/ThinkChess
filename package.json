@@ -1,0 +1,57 @@
+{
+  "name": "thoughtful-chess",
+  "version": "1.0.0",
+  "description": "A chess app that requires move justifications - think before you move",
+  "main": "electron/main.ts",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron --require tsx/cjs .\"",
+    "dev:web": "vite",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "build": "npm run build:electron && vite build && electron-builder",
+    "preview": "vite preview"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chess.js": "^1.0.0-beta.8",
+    "react": "^18.2.0",
+    "react-chessboard": "^4.6.0",
+    "react-dom": "^18.2.0",
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.3.0",
+    "vite": "^5.0.0",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.thoughtfulchess.app",
+    "productName": "Thoughtful Chess",
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
+
+
